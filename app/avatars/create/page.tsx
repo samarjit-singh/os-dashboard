@@ -95,14 +95,14 @@ export default function CreateAvatarPage() {
   const selectedSystem = systems.find((s) => s.id === formData.systemId);
 
   return (
-    <div className="min-h-screen bg-yellow-300 p-4">
+    <div className="min-h-screen bg-white p-4">
       <div className="max-w-2xl mx-auto">
         {/* Header */}
         <div className="flex items-center gap-4 mb-8">
-          <Link href="/avatars">
+          <Link href="/">
             <Button
               variant="outline"
-              className="border-2 border-black font-black shadow-[4px_4px_0px_0px_#000] bg-transparent"
+              className="border-2 border-black font-black text-black shadow-[4px_4px_0px_0px_#000] bg-transparent"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
               BACK
@@ -146,7 +146,7 @@ export default function CreateAvatarPage() {
                   SELECT SYSTEM *
                 </Label>
                 {systemsLoading ? (
-                  <div className="p-3 border-2 border-black bg-gray-100 font-semibold">
+                  <div className="p-3 border-2 border-black text-black bg-gray-100 font-semibold">
                     Loading systems...
                   </div>
                 ) : (
@@ -157,13 +157,13 @@ export default function CreateAvatarPage() {
                     }
                     disabled={loading}
                   >
-                    <SelectTrigger className="border-2 border-black font-semibold text-lg p-3 shadow-[4px_4px_0px_0px_#000]">
+                    <SelectTrigger className="border-2 border-black font-semibold text-black text-lg p-3 shadow-[4px_4px_0px_0px_#000]">
                       <SelectValue placeholder="Choose a system for this avatar" />
                     </SelectTrigger>
-                    <SelectContent>
+                    <SelectContent className="bg-white">
                       {systems.map((system) => (
                         <SelectItem key={system.id} value={system.id}>
-                          <div className="font-semibold">
+                          <div className="font-semibold text-black">
                             {system.name} ({system.type})
                           </div>
                         </SelectItem>
@@ -190,7 +190,7 @@ export default function CreateAvatarPage() {
                   placeholder="e.g., teacher, father, driver, assistant"
                   value={formData.name}
                   onChange={(e) => handleInputChange("name", e.target.value)}
-                  className="border-2 border-black font-semibold text-lg p-3 shadow-[4px_4px_0px_0px_#000]"
+                  className="border-2 border-black font-semibold text-lg text-black p-3 shadow-[4px_4px_0px_0px_#000]"
                   disabled={loading}
                 />
                 <p className="text-sm font-semibold text-gray-600">
@@ -206,14 +206,14 @@ export default function CreateAvatarPage() {
                 >
                   {loading ? (
                     <>
-                      <Loader2 className="w-4 h-4 mr-2 animate-spin" />
+                      <Loader2 className="w-4 h-4 mr-2 animate-spin text-black" />
                       CREATING...
                     </>
                   ) : (
                     "CREATE AVATAR"
                   )}
                 </Button>
-                <Link href="/avatars">
+                {/* <Link href="/avatars/create">
                   <Button
                     type="button"
                     variant="outline"
@@ -222,7 +222,7 @@ export default function CreateAvatarPage() {
                   >
                     CANCEL
                   </Button>
-                </Link>
+                </Link> */}
               </div>
             </form>
           </CardContent>

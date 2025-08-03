@@ -64,14 +64,14 @@ export default function CreateSystemPage() {
   };
 
   return (
-    <div className="min-h-screen bg-yellow-300 p-4">
+    <div className="min-h-screen bg-white p-4">
       <div className="max-w-2xl mx-auto">
         {/* Header */}
         <div className="flex items-center gap-4 mb-8">
-          <Link href="/systems">
+          <Link href="/">
             <Button
               variant="outline"
-              className="border-2 border-black font-black shadow-[4px_4px_0px_0px_#000] bg-transparent"
+              className="border-2 border-black font-black text-black shadow-[4px_4px_0px_0px_#000] bg-transparent"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
               BACK
@@ -117,7 +117,7 @@ export default function CreateSystemPage() {
                   placeholder="e.g., human (Samarjit), car (Hyundai Creta)"
                   value={formData.name}
                   onChange={(e) => handleInputChange("name", e.target.value)}
-                  className="border-2 border-black font-semibold text-lg p-3 shadow-[4px_4px_0px_0px_#000]"
+                  className="border-2 border-black font-semibold text-lg text-black p-3 shadow-[4px_4px_0px_0px_#000]"
                   disabled={loading}
                 />
                 <p className="text-sm font-semibold text-gray-600">
@@ -136,7 +136,7 @@ export default function CreateSystemPage() {
                   placeholder="e.g., human, car, robot, animal"
                   value={formData.type}
                   onChange={(e) => handleInputChange("type", e.target.value)}
-                  className="border-2 border-black font-semibold text-lg p-3 shadow-[4px_4px_0px_0px_#000]"
+                  className="border-2 border-black font-semibold text-lg text-black p-3 shadow-[4px_4px_0px_0px_#000]"
                   disabled={loading}
                 />
                 <p className="text-sm font-semibold text-gray-600">
@@ -164,7 +164,7 @@ export default function CreateSystemPage() {
                     type="button"
                     variant="outline"
                     disabled={loading}
-                    className="border-2 border-black font-black shadow-[4px_4px_0px_0px_#000] hover:shadow-[2px_2px_0px_0px_#000] transition-all text-lg py-3 px-6 bg-transparent"
+                    className="border-2 border-black font-black shadow-[4px_4px_0px_0px_#000] hover:shadow-[2px_2px_0px_0px_#000] transition-all text-lg text-black py-3 px-6 bg-transparent"
                   >
                     CANCEL
                   </Button>

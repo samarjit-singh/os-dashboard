@@ -50,7 +50,7 @@ export default function SystemDetailPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-yellow-300 p-4 flex items-center justify-center">
+      <div className="min-h-screen bg-white p-4 flex items-center justify-center">
         <div className="text-4xl font-black text-black">LOADING SYSTEM...</div>
       </div>
     );
@@ -58,7 +58,7 @@ export default function SystemDetailPage() {
 
   if (error || !system) {
     return (
-      <div className="min-h-screen bg-yellow-300 p-4">
+      <div className="min-h-screen bg-white p-4">
         <div className="max-w-2xl mx-auto">
           <Card className="border-4 border-red-500 bg-red-100">
             <CardContent className="p-8 text-center">
@@ -78,7 +78,7 @@ export default function SystemDetailPage() {
   }
 
   return (
-    <div className="min-h-screen bg-yellow-300 p-4">
+    <div className="min-h-screen bg-white p-4">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
@@ -86,7 +86,7 @@ export default function SystemDetailPage() {
             <Link href="/systems">
               <Button
                 variant="outline"
-                className="border-2 border-black font-black shadow-[4px_4px_0px_0px_#000] bg-transparent"
+                className="border-2 border-black font-black text-black shadow-[4px_4px_0px_0px_#000] bg-transparent"
               >
                 <ArrowLeft className="w-4 h-4 mr-2" />
                 BACK
@@ -198,7 +198,7 @@ export default function SystemDetailPage() {
                               <Badge
                                 key={goal.id}
                                 variant="outline"
-                                className="border-2 border-black font-bold text-xs"
+                                className="border-2 border-black font-bold text-black text-xs"
                               >
                                 {goal.description}
                               </Badge>
@@ -220,7 +220,7 @@ export default function SystemDetailPage() {
                           <Button
                             variant="outline"
                             size="sm"
-                            className="w-full border-2 border-black font-black shadow-[2px_2px_0px_0px_#000] bg-transparent"
+                            className="w-full border-2 border-black font-black text-black shadow-[2px_2px_0px_0px_#000] bg-transparent"
                           >
                             VIEW
                           </Button>

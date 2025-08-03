@@ -99,14 +99,14 @@ export default function AutoMapPage() {
   };
 
   return (
-    <div className="min-h-screen bg-yellow-300 p-4">
+    <div className="min-h-screen bg-white p-4">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="flex items-center gap-4 mb-8">
           <Link href="/">
             <Button
               variant="outline"
-              className="border-2 border-black font-black shadow-[4px_4px_0px_0px_#000] bg-transparent"
+              className="border-2 border-black text-black font-black shadow-[4px_4px_0px_0px_#000] bg-transparent"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
               BACK
@@ -167,7 +167,7 @@ export default function AutoMapPage() {
                     onChange={(e) =>
                       setThreshold(Number.parseFloat(e.target.value))
                     }
-                    className="border-2 border-black font-semibold text-lg p-3 shadow-[4px_4px_0px_0px_#000]"
+                    className="border-2 border-black text-black font-semibold text-lg p-3 shadow-[4px_4px_0px_0px_#000]"
                     disabled={loading}
                   />
                   <p className="text-sm font-semibold text-gray-600">

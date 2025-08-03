@@ -20,7 +20,7 @@ import {
 
 export default function HomePage() {
   return (
-    <div className="min-h-screen bg-yellow-300 p-4">
+    <div className="min-h-screen bg-white p-4">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="text-center mb-12">
@@ -37,7 +37,7 @@ export default function HomePage() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
           {/* Systems */}
           <Card className="border-4 border-black shadow-[8px_8px_0px_0px_#000] bg-white">
-            <CardHeader className="pb-4">
+            <CardHeader className="mb-2">
               <div className="flex items-center gap-3">
                 <Users className="w-8 h-8 text-black" />
                 <CardTitle className="text-2xl font-black text-black">
@@ -48,7 +48,7 @@ export default function HomePage() {
                 Core entities: humans, cars, robots, anything under the sun
               </CardDescription>
             </CardHeader>
-            <CardContent className="space-y-3">
+            <CardContent>
               <Link href="/systems/create">
                 <Button className="w-full bg-red-500 hover:bg-red-600 text-white font-black border-2 border-black shadow-[4px_4px_0px_0px_#000] hover:shadow-[2px_2px_0px_0px_#000] transition-all">
                   <Plus className="w-4 h-4 mr-2" />
@@ -58,7 +58,7 @@ export default function HomePage() {
               <Link href="/systems">
                 <Button
                   variant="outline"
-                  className="w-full border-2 border-black font-black shadow-[4px_4px_0px_0px_#000] hover:shadow-[2px_2px_0px_0px_#000] transition-all bg-transparent text-black"
+                  className="w-full border-2 border-black font-black shadow-[4px_4px_0px_0px_#000] hover:shadow-[2px_2px_0px_0px_#000] transition-all bg-transparent text-black mt-2"
                 >
                   <Eye className="w-4 h-4 mr-2" />
                   VIEW ALL
@@ -69,7 +69,7 @@ export default function HomePage() {
 
           {/* Avatars */}
           <Card className="border-4 border-black shadow-[8px_8px_0px_0px_#000] bg-white">
-            <CardHeader className="pb-4">
+            <CardHeader className="mb-7">
               <div className="flex items-center gap-3">
                 <UserCircle className="w-8 h-8 text-black" />
                 <CardTitle className="text-2xl font-black text-black">
@@ -87,7 +87,7 @@ export default function HomePage() {
                   CREATE AVATAR
                 </Button>
               </Link>
-              <Link href="/avatars">
+              {/* <Link href="/avatars">
                 <Button
                   variant="outline"
                   className="w-full border-2 border-black font-black shadow-[4px_4px_0px_0px_#000] hover:shadow-[2px_2px_0px_0px_#000] transition-all bg-transparent text-black"
@@ -95,13 +95,13 @@ export default function HomePage() {
                   <Eye className="w-4 h-4 mr-2" />
                   VIEW ALL
                 </Button>
-              </Link>
+              </Link> */}
             </CardContent>
           </Card>
 
           {/* Goals */}
           <Card className="border-4 border-black shadow-[8px_8px_0px_0px_#000] bg-white">
-            <CardHeader className="pb-4">
+            <CardHeader className="mb-7">
               <div className="flex items-center gap-3">
                 <Target className="w-8 h-8 text-black" />
                 <CardTitle className="text-2xl font-black text-black">
@@ -119,7 +119,7 @@ export default function HomePage() {
                   CREATE GOAL
                 </Button>
               </Link>
-              <Link href="/goals">
+              {/* <Link href="/goals">
                 <Button
                   variant="outline"
                   className="w-full border-2 border-black font-black shadow-[4px_4px_0px_0px_#000] hover:shadow-[2px_2px_0px_0px_#000] transition-all bg-transparent text-black"
@@ -127,13 +127,13 @@ export default function HomePage() {
                   <Eye className="w-4 h-4 mr-2" />
                   VIEW ALL
                 </Button>
-              </Link>
+              </Link> */}
             </CardContent>
           </Card>
 
           {/* Needs */}
           <Card className="border-4 border-black shadow-[8px_8px_0px_0px_#000] bg-white">
-            <CardHeader className="pb-4">
+            <CardHeader className="mb-7">
               <div className="flex items-center gap-3">
                 <Zap className="w-8 h-8 text-black" />
                 <CardTitle className="text-2xl font-black text-black">
@@ -151,7 +151,7 @@ export default function HomePage() {
                   CREATE NEED
                 </Button>
               </Link>
-              <Link href="/needs">
+              {/* <Link href="/needs">
                 <Button
                   variant="outline"
                   className="w-full border-2 border-black font-black shadow-[4px_4px_0px_0px_#000] hover:shadow-[2px_2px_0px_0px_#000] transition-all bg-transparent text-black"
@@ -159,13 +159,13 @@ export default function HomePage() {
                   <Eye className="w-4 h-4 mr-2" />
                   VIEW ALL
                 </Button>
-              </Link>
+              </Link> */}
             </CardContent>
           </Card>
 
           {/* Mappings */}
           <Card className="border-4 border-black shadow-[8px_8px_0px_0px_#000] bg-white">
-            <CardHeader className="pb-4">
+            <CardHeader className="mb-2">
               <div className="flex items-center gap-3">
                 <GitBranch className="w-8 h-8 text-black" />
                 <CardTitle className="text-2xl font-black text-black">
@@ -183,7 +183,7 @@ export default function HomePage() {
                   CREATE MAPPING
                 </Button>
               </Link>
-              <Link href="/mappings">
+              {/* <Link href="/mappings">
                 <Button
                   variant="outline"
                   className="w-full border-2 border-black font-black shadow-[4px_4px_0px_0px_#000] hover:shadow-[2px_2px_0px_0px_#000] transition-all bg-transparent text-black"
@@ -191,13 +191,13 @@ export default function HomePage() {
                   <Eye className="w-4 h-4 mr-2" />
                   VIEW ALL
                 </Button>
-              </Link>
+              </Link> */}
             </CardContent>
           </Card>
 
           {/* Logs */}
           <Card className="border-4 border-black shadow-[8px_8px_0px_0px_#000] bg-white">
-            <CardHeader className="pb-4">
+            <CardHeader className="mb-7">
               <div className="flex items-center gap-3">
                 <Activity className="w-8 h-8 text-black" />
                 <CardTitle className="text-2xl font-black text-black">

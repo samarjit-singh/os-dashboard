@@ -65,7 +65,7 @@ export default function DashboardPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-yellow-300 p-4 flex items-center justify-center">
+      <div className="min-h-screen bg-white p-4 flex items-center justify-center">
         <div className="text-4xl font-black text-black">
           LOADING DASHBOARD...
         </div>
@@ -74,14 +74,14 @@ export default function DashboardPage() {
   }
 
   return (
-    <div className="min-h-screen bg-yellow-300 p-4">
+    <div className="min-h-screen bg-white p-4">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="flex items-center gap-4 mb-8">
           <Link href="/">
             <Button
               variant="outline"
-              className="border-2 border-black font-black shadow-[4px_4px_0px_0px_#000] bg-transparent"
+              className="border-2 border-black text-black font-black shadow-[4px_4px_0px_0px_#000] bg-transparent"
             >
               <ArrowLeft className="w-4 h-4 mr-2" />
               HOME
@@ -177,7 +177,7 @@ export default function DashboardPage() {
                 <Link href="/systems">
                   <Button
                     variant="outline"
-                    className="border-2 border-black font-black shadow-[2px_2px_0px_0px_#000] bg-transparent"
+                    className="border-2 border-black text-black font-black shadow-[2px_2px_0px_0px_#000] bg-transparent"
                   >
                     VIEW ALL
                   </Button>
@@ -205,7 +205,7 @@ export default function DashboardPage() {
                     <Button
                       size="sm"
                       variant="outline"
-                      className="border-2 border-black font-black shadow-[2px_2px_0px_0px_#000] bg-transparent"
+                      className="border-2 border-black font-black shadow-[2px_2px_0px_0px_#000] bg-transparent text-black"
                     >
                       VIEW
                     </Button>
@@ -234,7 +234,7 @@ export default function DashboardPage() {
                 <Link href="/logs">
                   <Button
                     variant="outline"
-                    className="border-2 border-black font-black shadow-[2px_2px_0px_0px_#000] bg-transparent"
+                    className="border-2 border-black font-black shadow-[2px_2px_0px_0px_#000] text-black bg-transparent"
                   >
                     VIEW ALL
                   </Button>

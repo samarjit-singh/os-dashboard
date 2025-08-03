@@ -81,7 +81,7 @@ export default function LogsPage() {
 
   if (loading) {
     return (
-      <div className="min-h-screen bg-yellow-300 p-4 flex items-center justify-center">
+      <div className="min-h-screen bg-white p-4 flex items-center justify-center">
         <div className="text-4xl font-black text-black">
           LOADING ACTIVITY LOGS...
         </div>
@@ -90,7 +90,7 @@ export default function LogsPage() {
   }
 
   return (
-    <div className="min-h-screen bg-yellow-300 p-4">
+    <div className="min-h-screen bg-white p-4">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="flex items-center justify-between mb-8">
@@ -98,7 +98,7 @@ export default function LogsPage() {
             <Link href="/">
               <Button
                 variant="outline"
-                className="border-2 border-black font-black shadow-[4px_4px_0px_0px_#000] bg-transparent"
+                className="border-2 border-black font-black text-black shadow-[4px_4px_0px_0px_#000] bg-transparent"
               >
                 <ArrowLeft className="w-4 h-4 mr-2" />
                 BACK
@@ -154,7 +154,7 @@ export default function LogsPage() {
                     placeholder="Search descriptions, types..."
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
-                    className="pl-10 border-2 border-black font-semibold shadow-[4px_4px_0px_0px_#000]"
+                    className="pl-10 border-2 border-black font-semibold text-black shadow-[4px_4px_0px_0px_#000]"
                   />
                 </div>
               </div>
@@ -167,7 +167,7 @@ export default function LogsPage() {
                 <select
                   value={selectedType}
                   onChange={(e) => setSelectedType(e.target.value)}
-                  className="w-full p-2 border-2 border-black font-semibold shadow-[4px_4px_0px_0px_#000] bg-white"
+                  className="w-full rounded-md h-9 border-2 border-black text-black font-semibold shadow-[4px_4px_0px_0px_#000] bg-white"
                 >
                   <option value="all">ALL TYPES</option>
                   {uniqueTypes.map((type) => (
@@ -223,7 +223,7 @@ export default function LogsPage() {
                         )}
                       </div>
                       {log.metadata && (
-                        <div className="mt-2 p-2 bg-gray-200 border border-gray-400 text-xs font-mono">
+                        <div className="mt-2 p-2 bg-gray-200 border border-gray-400 text-xs font-mono text-black">
                           {JSON.stringify(log.metadata, null, 2)}
                         </div>
                       )}
