@@ -119,15 +119,15 @@ export default function HomePage() {
                   CREATE GOAL
                 </Button>
               </Link>
-              {/* <Link href="/goals">
+              <Link href="/goals">
                 <Button
                   variant="outline"
-                  className="w-full border-2 border-black font-black shadow-[4px_4px_0px_0px_#000] hover:shadow-[2px_2px_0px_0px_#000] transition-all bg-transparent text-black"
+                  className="w-full border-2 border-black font-black shadow-[4px_4px_0px_0px_#000] hover:shadow-[2px_2px_0px_0px_#000] transition-all bg-transparent text-black mt-2"
                 >
                   <Eye className="w-4 h-4 mr-2" />
                   VIEW ALL
                 </Button>
-              </Link> */}
+              </Link>
             </CardContent>
           </Card>
 

@@ -5,48 +5,46 @@ import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { systemApi, type System } from "@/lib/api";
-import { ArrowLeft, Plus, UserCircle, Users, Target } from "lucide-react";
+import { goalApi, type Goal } from "@/lib/api";
+import { ArrowLeft, Plus, Target, UserCircle, Users, Zap } from "lucide-react";
 
-export default function AvatarsPage() {
-  const [systems, setSystems] = useState<System[]>([]);
+export default function GoalsPage() {
+  const [goals, setGoals] = useState<any>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    fetchSystems();
+    fetchGoals();
   }, []);
 
-  const fetchSystems = async () => {
+  const fetchGoals = async () => {
     try {
       setLoading(true);
-      const response = await systemApi.getAll();
-      setSystems(response.data);
+      const response = await goalApi.getAllGoals();
+
+      setGoals(response.data);
     } catch (err) {
-      setError("Failed to fetch avatars");
+      setError("Failed to fetch goals");
       console.error(err);
     } finally {
       setLoading(false);
     }
   };
 
-  // Flatten all avatars from all systems
-  const allAvatars = systems.reduce((acc: any[], system) => {
-    if (system.avatars) {
-      return [
-        ...acc,
-        ...system.avatars.map((avatar) => ({ ...avatar, system })),
-      ];
-    }
-    return acc;
-  }, []);
+  const getStatusColor = (status: Goal["status"]) => {
+    const colors = {
+      pending: "bg-yellow-500",
+      "in-progress": "bg-blue-500",
+      fulfilled: "bg-green-500",
+      canceled: "bg-red-500",
+    };
+    return colors[status] || "bg-gray-500";
+  };
 
   if (loading) {
     return (
       <div className="min-h-screen bg-white p-4 flex items-center justify-center">
-        <div className="text-4xl font-black text-black text-black">
-          LOADING AVATARS...
-        </div>
+        <div className="text-4xl font-black text-black">LOADING GOALS...</div>
       </div>
     );
   }
@@ -68,18 +66,18 @@ export default function AvatarsPage() {
             </Link>
             <div>
               <h1 className="text-4xl font-black text-black flex items-center gap-3">
-                <UserCircle className="w-10 h-10" />
-                ALL AVATARS
+                <Target className="w-10 h-10" />
+                ALL GOALS
               </h1>
               <p className="text-lg font-bold text-black">
-                {allAvatars.length} avatars across {systems.length} systems
+                {goals.length} goals in the system
               </p>
             </div>
           </div>
-          <Link href="/avatars/create">
-            <Button className="bg-blue-500 hover:bg-blue-600 text-white font-black border-2 border-black shadow-[4px_4px_0px_0px_#000]">
+          <Link href="/goals/create">
+            <Button className="bg-green-500 hover:bg-green-600 text-white font-black border-2 border-black shadow-[4px_4px_0px_0px_#000]">
               <Plus className="w-4 h-4 mr-2" />
-              CREATE AVATAR
+              CREATE GOAL
             </Button>
           </Link>
         </div>
@@ -92,58 +90,73 @@ export default function AvatarsPage() {
           </Card>
         )}
 
-        {/* Avatars Grid */}
+        {/* Goals Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {allAvatars.map((avatar) => (
+          {goals.map((goal: any) => (
             <Card
-              key={avatar.id}
+              key={goal.id}
               className="border-4 border-black shadow-[8px_8px_0px_0px_#000] bg-white"
             >
               <CardHeader className="pb-4">
                 <div className="flex items-start justify-between">
                   <div className="flex-1">
-                    <CardTitle className="text-xl font-black text-black mb-2">
-                      {avatar.name}
+                    <CardTitle className="text-lg font-black text-black mb-2">
+                      {goal.description}
                     </CardTitle>
-                    <div className="flex items-center gap-2">
-                      <Users className="w-4 h-4 text-gray-600" />
-                      <span className="font-semibold text-black">
-                        {avatar.system.name}
-                      </span>
-                      <Badge className="bg-blue-500 text-white font-bold border border-black text-xs">
-                        {avatar.system.type}
-                      </Badge>
-                    </div>
+                    <Badge
+                      className={`${getStatusColor(
+                        goal.status
+                      )} text-white font-bold border-2 border-black`}
+                    >
+                      {goal.status.toUpperCase().replace("-", " ")}
+                    </Badge>
                   </div>
                 </div>
               </CardHeader>
               <CardContent className="space-y-3">
+                {goal.avatar && (
+                  <div className="flex items-center gap-2 p-2 border-2 border-gray-300 bg-gray-50">
+                    <UserCircle className="w-4 h-4 text-gray-600" />
+                    <span className="font-semibold text-black">
+                      {goal.avatar.name}
+                    </span>
+                    {goal.avatar.system && (
+                      <div className="flex items-center gap-1 ml-auto">
+                        <Users className="w-3 h-3 text-gray-500" />
+                        <span className="text-sm font-semibold text-gray-600">
+                          {goal.avatar.system.name}
+                        </span>
+                      </div>
+                    )}
+                  </div>
+                )}
+
                 <div className="text-sm font-semibold text-gray-700">
-                  Created: {new Date(avatar.createdAt).toLocaleDateString()}
+                  Created: {new Date(goal.createdAt).toLocaleDateString()}
                 </div>
 
-                {avatar.goals && avatar.goals.length > 0 && (
+                {goal.needs && goal.needs.length > 0 && (
                   <div className="space-y-2">
                     <div className="font-bold text-black flex items-center gap-1">
-                      <Target className="w-4 h-4" />
-                      GOALS ({avatar.goals.length})
+                      <Zap className="w-4 h-4" />
+                      NEEDS ({goal.needs.length})
                     </div>
                     <div className="flex flex-wrap gap-1">
-                      {avatar.goals.slice(0, 2).map((goal: any) => (
+                      {goal.needs.slice(0, 2).map((need: any) => (
                         <Badge
-                          key={goal.id}
+                          key={need.id}
                           variant="outline"
-                          className="border-2 border-black font-bold text-xs"
+                          className="border-2 border-black font-bold text-black text-xs"
                         >
-                          {goal.description}
+                          {need.description}
                         </Badge>
                       ))}
-                      {avatar.goals.length > 2 && (
+                      {goal.needs.length > 2 && (
                         <Badge
                           variant="outline"
                           className="border-2 border-black font-bold text-xs"
                         >
-                          +{avatar.goals.length - 2} more
+                          +{goal.needs.length - 2} more
                         </Badge>
                       )}
                     </div>
@@ -151,7 +164,7 @@ export default function AvatarsPage() {
                 )}
 
                 <div className="flex gap-2 pt-2">
-                  <Link href={`/avatars/${avatar.id}`} className="flex-1">
+                  <Link href={`/goals/${goal.id}`} className="flex-1">
                     <Button
                       variant="outline"
                       className="w-full border-2 border-black font-black text-black shadow-[4px_4px_0px_0px_#000] bg-transparent"
@@ -159,31 +172,31 @@ export default function AvatarsPage() {
                       VIEW DETAILS
                     </Button>
                   </Link>
-                  {/* <Link href={`/goals/create?avatarId=${avatar.id}`}>
-                    <Button className="bg-green-500 hover:bg-green-600 text-white font-black border-2 border-black shadow-[4px_4px_0px_0px_#000]">
+                  <Link href={`/needs/create?goalId=${goal.id}`}>
+                    <Button className="bg-purple-500 hover:bg-purple-600 text-white font-black border-2 border-black shadow-[4px_4px_0px_0px_#000]">
                       <Plus className="w-4 h-4" />
                     </Button>
-                  </Link> */}
+                  </Link>
                 </div>
               </CardContent>
             </Card>
           ))}
         </div>
 
-        {allAvatars.length === 0 && !loading && (
+        {goals.length === 0 && !loading && (
           <Card className="border-4 border-black shadow-[8px_8px_0px_0px_#000] bg-white text-center p-12">
-            <UserCircle className="w-16 h-16 mx-auto mb-4 text-gray-400" />
+            <Target className="w-16 h-16 mx-auto mb-4 text-gray-400" />
             <h3 className="text-2xl font-black text-black mb-2">
-              NO AVATARS YET
+              NO GOALS YET
             </h3>
             <p className="text-gray-600 font-semibold mb-6">
-              Create your first avatar to define roles and identities for your
-              systems!
+              Create your first goal to start defining objectives for your
+              avatars!
             </p>
-            <Link href="/avatars/create">
-              <Button className="bg-blue-500 hover:bg-blue-600 text-white font-black border-2 border-black shadow-[4px_4px_0px_0px_#000]">
+            <Link href="/goals/create">
+              <Button className="bg-green-500 hover:bg-green-600 text-white font-black border-2 border-black shadow-[4px_4px_0px_0px_#000]">
                 <Plus className="w-4 h-4 mr-2" />
-                CREATE FIRST AVATAR
+                CREATE FIRST GOAL
               </Button>
             </Link>
           </Card>

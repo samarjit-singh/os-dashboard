@@ -97,6 +97,8 @@ export const goalApi = {
   create: (data: { avatarId: string; description: string }) =>
     api.post<Goal>("/goals", data),
 
+  getAllGoals: () => api.get<Goal>(`/goals`),
+
   getById: (id: string) => api.get<Goal>(`/goals/${id}`),
 
   getByAvatarId: (avatarId: string) =>
