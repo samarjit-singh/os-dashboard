@@ -151,15 +151,15 @@ export default function HomePage() {
                   CREATE NEED
                 </Button>
               </Link>
-              {/* <Link href="/needs">
+              <Link href="/needs">
                 <Button
                   variant="outline"
-                  className="w-full border-2 border-black font-black shadow-[4px_4px_0px_0px_#000] hover:shadow-[2px_2px_0px_0px_#000] transition-all bg-transparent text-black"
+                  className="w-full border-2 border-black font-black shadow-[4px_4px_0px_0px_#000] hover:shadow-[2px_2px_0px_0px_#000] transition-all bg-transparent text-black mt-2"
                 >
                   <Eye className="w-4 h-4 mr-2" />
                   VIEW ALL
                 </Button>
-              </Link> */}
+              </Link>
             </CardContent>
           </Card>
 
@@ -227,12 +227,12 @@ export default function HomePage() {
             </CardTitle>
           </CardHeader>
           <CardContent>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <Link href="/mappings/auto-map">
+            <div className="grid grid-cols-1 md:grid-cols-1 gap-4">
+              {/* <Link href="/mappings/auto-map">
                 <Button className="w-full bg-black text-white font-black border-2 border-black shadow-[4px_4px_0px_0px_#fff] hover:shadow-[2px_2px_0px_0px_#fff] transition-all">
                   🤖 AUTO-MAP NEEDS
                 </Button>
-              </Link>
+              </Link> */}
               <Link href="/dashboard">
                 <Button className="w-full bg-white text-black font-black border-2 border-black shadow-[4px_4px_0px_0px_#000] hover:shadow-[2px_2px_0px_0px_#000] transition-all">
                   📊 SYSTEM DASHBOARD

@@ -115,6 +115,8 @@ export const needApi = {
 
   getById: (id: string) => api.get<Need>(`/needs/${id}`),
 
+  getAllNeeds: () => api.get<Need>(`/needs`),
+
   getByGoalId: (goalId: string) => api.get<Need[]>(`/needs/goal/${goalId}`),
 };
 
